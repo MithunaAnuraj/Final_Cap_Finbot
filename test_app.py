@@ -14,7 +14,7 @@ if 'tools' not in session_state:
 if 'agent' not in session_state:
     session_state.agent = None
 
-@st.cache_resource
+
 def initialize_tools():
     if not session_state.tools:
         session_state.tools = get_repl(session_state.tools)
@@ -22,7 +22,7 @@ def initialize_tools():
 def re_initialize_agent():
     session_state.tools = get_repl(session_state.tools)
     session_state.agent = create_agent_chase_way(session_state.tools)
-@st.cache_resource
+
 def initialize_agent():
     if not session_state.agent:
         initialize_tools()  # Ensure tools are initialized
